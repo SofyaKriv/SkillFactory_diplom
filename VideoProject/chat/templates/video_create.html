@@ -1,0 +1,14 @@
+{% extends 'default.html' %}
+{% load static %}
+
+{% block title %} Posts list {% endblock title %}
+ 
+{% block body %}
+<h3>Информация о видео</h3>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.media }}
+    {{ form.as_p }}
+    <input type="submit" value="Добавить видео">
+</form>
+{% endblock body %}

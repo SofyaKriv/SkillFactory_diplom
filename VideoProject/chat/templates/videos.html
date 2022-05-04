@@ -1,0 +1,39 @@
+
+{% extends 'default.html' %}
+
+
+{% block body %}
+
+    <h3 style="text-align:center">
+    Видео
+    </h3>
+    {% if videos %}
+        <table>
+            <thead>
+            <tr>
+                <th style="text-align: center">
+                    Автор
+                </th>
+                <th style="text-align: center">
+                    Видео
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+        {% for video in videos %}
+            <tr>
+                <td style="text-align: center">
+                    <a href="{% url 'author' pk=video.author.id %}">{{ video.author }}</a>
+                </td>
+                <td style="text-align: center">
+                    <a href="{% url 'video-detail' pk=video.id %}">{{ video.title }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    {% else %}
+        <h2>Видео нет!</h2>
+    {% endif %}
+<a href="{% url 'video_create' %}">Добавить новое видео</a> <br>
+{% endblock body %}

@@ -1,0 +1,31 @@
+
+{% extends 'default.html' %}
+
+{% block body %}
+
+    <h3 style="text-align:center">
+    Категории
+    </h3>
+    {% if categories %}
+        <table>
+            <thead>
+            <tr>
+                <th style="text-align: center">
+                    Название
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+        {% for category in categories %}
+            <tr>
+                <td style="text-align: center">
+                    <a href="{% url 'category-detail' pk=category.id %}">{{ category.theme }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    {% else %}
+        <h2>Категорий нет!</h2>
+    {% endif %}
+{% endblock body %}
