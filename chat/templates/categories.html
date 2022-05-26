@@ -1,0 +1,53 @@
+
+{% extends 'default.html' %}
+
+{% block body %}
+    <style>
+        .btn_success{
+            border: none;
+            color: white;
+            padding: 14px 28px;
+            cursor: pointer;
+            background-color: #2E8B57;
+        }
+        .btn_danger{
+            border: none;
+            color: white;
+            padding: 14px 28px;
+            cursor: pointer;
+            background-color: #DC143C;
+        }
+    </style>
+    <h3 style="text-align:center">
+    Категории
+    </h3>
+    {% if categories %}
+        <table>
+            <thead>
+            <tr>
+                <th style="text-align: center">
+                    Название
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+        {% for category in categories %}
+            <tr>
+                <td style="text-align: center">
+                    <a href="{% url 'category-detail' pk=category.id %}">{{ category.theme }}</a>
+                </td>
+                <td>
+                    {% if category in user.category_set.all %}
+                        <a href="unsubscribe/{{ category.id }}" class="btn_danger">Отписаться</a>
+                    {% else %}
+                        <a href="subscribe/{{ category.id }}" class="btn_success">Подписаться</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    {% else %}
+        <h2>Категорий нет!</h2>
+    {% endif %}
+{% endblock body %}
