@@ -1,0 +1,21 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Подтвердите Ваш E-mail" %}{% endblock %}
+
+{% block content %}
+<h1>{% trans "Подтвердите Ваш E-mail" %}</h1>
+
+{% url 'account_email' as email_url %}
+
+<p>{% blocktrans %}Эта часть сайта требует подтверждения Вашей личности.
+    В связи с этим подтвердите, пожалуйста, что данный e-mail принадлежит именно Вам. {% endblocktrans %}</p>
+
+<p>{% blocktrans %}Мы отправили Ваш письмо с подтверждением. Пожалуйста, перейдите по ссылке в письме.
+    Пожалуйста, свяжитесь с нами, если письмо не придет в течение нескольких минут.{% endblocktrans %}</p>
+
+<p>{% blocktrans %}<strong>Примечание:</strong> Вы можете <a href="{{ email_url }}">изменить Ваш e-mail</a>.{% endblocktrans %}</p>
+
+
+{% endblock %}

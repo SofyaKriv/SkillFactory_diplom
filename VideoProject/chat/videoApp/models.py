@@ -13,19 +13,11 @@ from app.models import UserProfile
 #     def __str__(self):
 #         return self.user.username
 
-
-class Category(models.Model):
-    theme = models.CharField(max_length=255, unique=True)
-
-    def __str__(self):
-        return f'{self.theme}'
-
-
 class Video(models.Model):
     video = models.FileField(upload_to='uploads/')
     author = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     title = models.CharField(max_length=255, default='')
-    category = models.ManyToManyField(Category, through='VideoCategory')
+    # category = models.ManyToManyField(Category, through='VideoCategory')
     rate_video = models.IntegerField(default=0, null=True)
     create_date = models.DateTimeField(auto_now=True)
 
@@ -36,6 +28,15 @@ class Video(models.Model):
     def dislike(self):
         self.rate_video -= Video.objects.get(id=1).rate_video
         self.save()
+
+
+class Category(models.Model):
+    theme = models.CharField(max_length=255, unique=True)
+    video = models.ManyToManyField(Video, through='VideoCategory')
+    subscriber = models.ManyToManyField(User, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.theme}'
 
 
 class VideoCategory(models.Model):

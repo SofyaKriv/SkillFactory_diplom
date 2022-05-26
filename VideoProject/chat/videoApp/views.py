@@ -1,12 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework import viewsets, generics
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
+from django.contrib.auth.decorators import login_required
 from .filters import *
 from datetime import datetime
 from .forms import *
+from django.views.decorators.csrf import csrf_exempt
+from django.http.response import JsonResponse
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from app.models import UserProfile
@@ -17,6 +20,11 @@ from .models import *
 class VideoView(viewsets.ModelViewSet):
     serializer_class = VideoSerializer
     queryset = Video.objects.all()
+
+
+class VideoCategoryView(viewsets.ModelViewSet):
+    serializer_class = VideoCategorySerializer
+    queryset = VideoCategory.objects.all()
 
 
 def index(request):
@@ -50,6 +58,18 @@ class VideoDetail(generics.RetrieveAPIView):
             return self.form_invalid(form)
 
 
+@csrf_exempt
+def video_list(request, pk=None):
+
+    if request.method == 'GET':
+        if pk:
+            videos = Video.objects.filter(id=pk)
+        else:
+            videos = Video.objects.all()
+        serializer = VideoSerializer(videos, many=True, context={'request': request})
+        return JsonResponse(serializer.data, safe=False)
+
+
 class CategoryView(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
     queryset = Category.objects.all()
@@ -80,9 +100,8 @@ class CategoryDetail(APIView):
         return Response({'serializer': serializer, 'category': category, 'videos': video_get})
 
 
-# class PostsCreateView(PermissionRequiredMixin, CreateView):
-class PostsCreateView(CreateView):
-    # permission_required = 'video.add_video'
+class PostsCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'video.add_video'
     template_name = 'video_create.html'
     form_class = PostsForm
     success_url = '/video/'
@@ -114,5 +133,30 @@ class SearchList(ListView):
 
 def author_view(request, pk):
     return render(request, 'page.html', {'id_user': pk,
+                                         'receiver': User.objects.get(username=UserProfile.objects.get(id=pk).user.username),
                                          'userprofile': UserProfile.objects.get(id=pk),
                                          'avatar': UserProfile.objects.get(id=pk).avatar})
+
+
+@login_required
+def subscribe_me(request, pk):
+    user = request.user
+    category = Category.objects.get(id=pk)
+    if category not in user.category_set.all():
+        category.subscriber.add(user)
+        return redirect(request.META.get('HTTP_REFERER'))
+    else:
+        return redirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def unsubscribe_me(request, pk):
+    user = request.user
+    category = Category.objects.get(id=pk)
+    if category in user.category_set.all():
+        category.subscriber.remove(user)
+        return redirect(request.META.get('HTTP_REFERER'))
+    else:
+        return redirect(request.META.get('HTTP_REFERER'))
+
+

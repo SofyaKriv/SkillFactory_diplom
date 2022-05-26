@@ -14,5 +14,5 @@
     {{ userprofile }}
     </h3>
     <p><img alt="" src="/media/{{ userprofile.avatar }}" style="height:500px; " class="center" /></p>
-
+    <a href="{% url 'chat' sender=request.user.id receiver=receiver.id %}" class="center">Начать чат</a>
 {% endblock body %}

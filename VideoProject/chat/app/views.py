@@ -1,5 +1,6 @@
 from django.views.generic import DetailView, UpdateView, CreateView
 from django.contrib.auth import authenticate, login
+from rest_framework import viewsets, generics
 from django.contrib.auth.models import User
 from django.http.response import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
@@ -13,18 +14,17 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     if request.user.is_authenticated:
         return redirect('chats')
-    if request.method == 'GET':
-        return render(request, 'index.html', {})
-    if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-        else:
-            return HttpResponse('{"error": "Вы не зарегистрированы"}')
-        return redirect('chats')
+    else:
+        return redirect('accounts/login/')
 
+
+class UserView(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
+
+
+def main_page(request):
+    return render(request, 'main_page.html', {})
 
 @csrf_exempt
 def user_list(request, pk=None):
@@ -154,6 +154,11 @@ def message_view(request, sender, receiver):
                                    Message.objects.filter(sender_id=receiver, receiver_id=sender)})
 
 
+class MessageView(viewsets.ModelViewSet):
+    serializer_class = MessageSerializer
+    queryset = Message.objects.all()
+
+
 def rooms_view(request):
     if not request.user.is_authenticated:
         return redirect('index')
@@ -173,23 +178,4 @@ def room_message_view(request, sender, pk):
                                    Room_message.objects.filter(send_id=pk, room_id=sender)})
 
 
-@login_required
-def subscribe_me(request, pk):
-    user = request.user
-    room = Room.objects.get(id=pk)
-    if room not in user.room_set.all():
-        room.participants.add(user)
-        return redirect(request.META.get('HTTP_REFERER'))
-    else:
-        return redirect(request.META.get('HTTP_REFERER'))
 
-
-@login_required
-def unsubscribe_me(request, pk):
-    user = request.user
-    room = Room.objects.get(id=pk)
-    if room in user.room_set.all():
-        room.participants.add(user)
-        return redirect(request.META.get('HTTP_REFERER'))
-    else:
-        return redirect(request.META.get('HTTP_REFERER'))
