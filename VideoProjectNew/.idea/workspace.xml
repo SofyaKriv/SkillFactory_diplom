@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3f13e2ab-a218-424e-af74-f44418bb88dd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/chat/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/1.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/2.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/3.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/4.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/5.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/6.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/7.pack" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/7.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/8.pack" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/8.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/src/Categories.css" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/src/Categories.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/src/Categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/src/Categories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/src/Category.css" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/src/Category.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/src/Category.js" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/src/Category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/src/CategoryInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/src/CategoryInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/src/Chat.css" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/src/Chat.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/src/Chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/src/Chat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/src/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/src/Home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/src/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/src/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/src/Messages.js" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/src/Messages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/src/Video.css" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/src/Video.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/src/Video.js" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/src/Video.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/src/VideoShow.js" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/src/VideoShow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/src/Videos.css" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/src/Videos.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/frontend/src/Videos.js" beforeDir="false" afterPath="$PROJECT_DIR$/chat/frontend/src/Videos.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/chat/frontend" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1zOxZN6BVUkg5CZxkpi3XpLAA0c" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/VideoProject" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\79116\PycharmProjects\VideoProject\chat\videoshow\src" />
+      <recent name="C:\Users\79116\PycharmProjects\chat\chat\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\79116\PycharmProjects\VideoProject\chat\videoshow\src" />
+      <recent name="C:\Users\79116\PycharmProjects\chat\chat\chat" />
+      <recent name="C:\Users\79116\PycharmProjects\chat\chat\templates" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="VideoProject" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3f13e2ab-a218-424e-af74-f44418bb88dd" name="Changes" comment="" />
+      <created>1634032989860</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1634032989860</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/chat/videoshow/react-pwa" />
+    </ignored-roots>
+  </component>
+</project>

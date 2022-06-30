@@ -1,0 +1,27 @@
+
+{% extends 'default.html' %}
+
+{% block body %}
+
+    <h3 style="text-align:center">
+    {{ category.theme }}
+    </h3>
+    <table>
+        <thead>
+        <tr>
+            <th style="text-align: center">
+                Видео
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for video in videos %}
+            <tr>
+                <td style="text-align: center">
+                    <a href="{% url 'video-detail' video.id %}">{{ video.title }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+{% endblock body %}

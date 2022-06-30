@@ -1,0 +1,21 @@
+
+{% extends 'default.html' %}
+
+
+{% block body %}
+    <style>
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+            display: block
+        }
+    </style>
+    <h3 style="text-align:center">
+    {{ video.title }}
+    </h3>
+    <video class="center" width="800" controls>
+        <source src="/media/{{ video.video }}"  type='video/mp4'>
+    </video>
+
+
+{% endblock body %}
