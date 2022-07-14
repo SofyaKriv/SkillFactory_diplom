@@ -6,6 +6,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.FileField(upload_to='uploads/')
+    phone = models.CharField(max_length=12, default='+00000000000')
 
     def __str__(self):
         return self.user.username

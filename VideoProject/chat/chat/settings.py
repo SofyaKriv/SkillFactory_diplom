@@ -26,6 +26,12 @@ SECRET_KEY = 'django-insecure-l4*w*a44injt+o2fi@kr#ne%o+2*&^2s-ykm0#n4a(ak54une%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = True
+
 ALLOWED_HOSTS = []
 
 REDIS_HOST = 'redis-11783.c257.us-east-1-3.ec2.cloud.redislabs.com'
@@ -49,12 +55,20 @@ INSTALLED_APPS = [
     'rest_framework',
     'app',
     'videoApp',
+    'frontend',
     'channels',
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'corsheaders',
+    'rest_framework_swagger'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -64,12 +78,18 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+)
+
+
 ROOT_URLCONF = 'chat.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,  'templates')],
+        'DIRS': [os.path.join(BASE_DIR,  'templates'), os.path.join(BASE_DIR, 'allauth', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -90,8 +110,8 @@ CHANNEL_LAYERS = {
         "BACKEND": "channels.layers.InMemoryChannelLayer",
         "ROUTING": "chat.routing.channel_routing",
         'CONFIG': {
-                    # "hosts": [('127.0.0.1', 6379)],
-                    "hosts": [CELERY_BROKER_URL]
+                    "hosts": [('127.0.0.1', 6379)],
+                    # "hosts": [CELERY_BROKER_URL]
                 },
         },
 }
@@ -156,3 +176,30 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'django_auth0.auth_backend.Auth0Backend'
+]
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'test250621'
+EMAIL_HOST_PASSWORD = 'fexpnyohksmnekvk'
+EMAIL_USE_SSL = True
+SERVER_EMAIL = 'test250621@yandex.ru'
+DEFAULT_FROM_EMAIL = 'test250621@yandex.ru'
+
+ACCOUNT_FORMS = {'signup': 'videoApp.forms.BasicSignupForm'}
+
+CONTEXT_PROCESSORS = [
+    'django_auth0.context_processors.auth0'
+]
+
+AUTH0_DOMAIN = 'dev-60usk2dq.us.auth0.com'
+AUTH0_CLIENT_ID = 'jHAJqRw2dGUmOYx26GsBRAD8wGQqSM9W'
+# AUTH0_SECRET = 'YOUR_SECRET'
+AUTH0_CALLBACK_URL = 'http://localhost:3000'
+AUTH0_SUCCESS_URL = '/'
+
+REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }

@@ -3,7 +3,13 @@
 
 
 {% block body %}
-
+    <style>
+        .center{
+            margin-left: auto;
+            margin-right: auto;
+            display: block
+        }
+    </style>
     <h3 style="text-align:center">
     Видео
     </h3>
@@ -35,5 +41,5 @@
     {% else %}
         <h2>Видео нет!</h2>
     {% endif %}
-<a href="{% url 'video_create' %}">Добавить новое видео</a> <br>
+<a href="{% url 'video_create' %}" class="center">Добавить новое видео</a> <br>
 {% endblock body %}

@@ -1,0 +1,39 @@
+import React from 'react';
+import {useState} from 'react';
+import axios from "axios";
+import {useNavigate} from 'react-router-dom';
+import './Login.css';
+
+
+function Login() {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [users, setUsers] = useState([]);
+
+    if (!users.length) {
+        axios.get("http://localhost:8000/api/users/").then(res => {
+            setUsers(res.data);
+        });
+    }
+    const navigate = useNavigate();
+    function handleClick() {
+        for (let i in users) {
+            if (users[i].username === username) {
+                navigate('/', {name: username});
+            }
+        }
+    }
+
+    return(
+        <div className="image-containerLogin">
+            <h1 className="enterName"> ВХОД </h1>
+            <form>
+                <input id="inputData1" type="text" value={username.value} onChange={(event) => setUsername(event.target.value)} name="username" placeholder="Имя пользователя" />
+                <input id="inputData2" type="password" value={password.value} onChange={(event) => setPassword(event.target.value)} name="password" placeholder="Пароль" />
+                <button id="enter" type="submit" onClick={() => handleClick()}>Войти</button>
+            </form>
+        </div>
+    )
+}
+
+export default Login;

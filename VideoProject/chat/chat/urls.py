@@ -21,10 +21,27 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
 from django.conf.urls.static import static
 from django.conf import settings
+import videoApp.views as video_views
+import app.views as app_views
+from rest_framework import routers
+from django.views.generic import TemplateView
+from rest_framework_swagger.views import get_swagger_view
+
+router = routers.DefaultRouter()
+router.register(r'videos', video_views.VideoView, 'videos')
+router.register(r'categories', video_views.CategoryView, 'categories')
+router.register(r'videocategory', video_views.VideoCategoryView, 'videocategory')
+router.register(r'messages', app_views.MessageView, 'messages')
+router.register(r'users', app_views.UserView, 'users')
+
+schema_view = get_swagger_view(title='Pastebin API')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app.urls')),
+    path('api/', include(router.urls)),
+    path('swagger-ui/', schema_view),
+    path('accounts/', include('allauth.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^ckeditor/upload/', login_required(views.upload), name='ckeditor_upload'),
     url(r'^ckeditor/browse/', never_cache(login_required(views.browse)), name='ckeditor_browse'),

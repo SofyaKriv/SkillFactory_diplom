@@ -1,0 +1,69 @@
+<! -- наследование шаблона default -->
+{% extends 'default.html' %}
+
+{% block content %}
+<style type="text/css">
+        table{
+            width: 1000px;
+            border-collapse: collapse;
+            border: 2px solid white;
+        }
+
+        td{
+            padding: 3px;
+            border: 1px solid;
+            text-align: left;
+        }
+</style>
+<hr>
+<h1>Поиск видео</h1>
+<form method="GET">
+    {{ filter.form }}
+    <input type="submit" value="Найти">
+</form>
+{% if search %}
+    <table>
+        <tr bgcolor="#C0C0C0">
+            <td>
+                Название
+            </td>
+            <td>
+                Автор
+            </td>
+        </tr>
+        {% for video in filter.qs %}
+        <tr>
+            <td>{{ video.title }}
+<!--                <a href="{% url 'video' video.id %}">{{ video.title }}</a> &lt;!&ndash; не забываем, что переменные в шаблоне ничем не отличаются от переменных в Python. Здесь также можно получать доступ к полям класса. Например, здесь мы выводим имя, в следующем столбце описание, и т. д.  &ndash;&gt;-->
+<!--                <a href="{% url 'video_update' video.id %}"><u>Редактировать</u></a>-->
+<!--                <a href="{% url 'video_delete' video.id %}"><u> Удалить </u></a> &lt;!&ndash; добавим ссылку на удаление новости&ndash;&gt;-->
+            </td>
+            <td>{{ video.author.user }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <h2>Видео нет!</h2>
+{% endif %}
+{% if is_paginated %}
+
+    {% if page_obj.has_previous %}
+        <a href="?page=1">First</a>
+        <a href="?page={{ page_obj.previous_page_number }}"><<<</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+            <a>{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">>>></a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+    {% endif %}
+
+{% endif %}
+{% endblock content %}
